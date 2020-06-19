@@ -1,0 +1,36 @@
+package com.sendmylove.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.view.RedirectView;
+
+import com.sendmylove.demo.model.dao.UserRepository;
+
+import model.domain.User;
+
+@RestController
+public class LoginController {
+	@Autowired
+	private UserRepository userRepo;
+
+	@PostMapping("insertUser")
+	public RedirectView insertUser(@RequestParam String id, @RequestParam String password,
+			@RequestParam String nickname) {
+		RedirectView rv = null;
+		rv.setUrl("/index.html");
+		try {
+			if (userRepo.existsById(id)) {
+				return rv;
+			} else {
+				userRepo.save(new User(id, password, nickname));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			rv.setUrl("/fail.html");
+			return rv;
+		}
+		return new RedirectView("index.html");
+	}
+}

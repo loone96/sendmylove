@@ -1,0 +1,5 @@
+package com.sendmylove.demo.model.dao;
+
+public class UserRepository {
+
+}

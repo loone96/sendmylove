@@ -1,0 +1,6 @@
+package com.sendmylove.demo.controller;
+
+
+public class LoginController {
+
+}

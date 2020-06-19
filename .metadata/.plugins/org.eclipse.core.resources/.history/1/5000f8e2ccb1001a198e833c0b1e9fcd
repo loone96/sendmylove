@@ -1,0 +1,20 @@
+package com.sendmylove.demo.controller;
+
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+public class LoginController{
+	@Autowired
+	private
+
+}
+
+/*@Autowired
+private UserRepository userRepo;
+
+// 회원가입
+@PostMapping("userInsert")
+public String userSave(@RequestParam("id") String id, (@RequestParam String id, @RequestParam String password, @RequestParam String nickname) {
+	userRepo.save(new User(id, password, nickname);
+	return "회원가입 완료";
+}*/

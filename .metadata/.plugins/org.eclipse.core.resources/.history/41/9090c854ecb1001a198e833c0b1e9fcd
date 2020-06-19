@@ -1,0 +1,31 @@
+package model.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import lombok.Data;
+
+@Data
+@Entity
+public class Board {
+	@Id
+	private Long no;
+	@Column(name="gender",length=10)
+	private String gender;
+	@Column(name="finddate", nullable=false)
+	private String finddate
+	
+	private String loc;
+	private String detail;
+
+	
+	private String writer varchar(45) fk <<아 외래키 fk user의 id를 참조하는
+
+
+detail varchar(45)
+writedate date 타입 jpa
+
+	활용 (temporay인가 그거)
+
+}

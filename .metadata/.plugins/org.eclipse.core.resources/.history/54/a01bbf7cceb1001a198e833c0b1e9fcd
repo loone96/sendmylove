@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	signup.html입니다.
+	<form action="insertUser" method="POST">
+		id:  <input type="text" name="id"> <br>
+		pw:  <input>
+		
+	</form>
+</body>
+</html>

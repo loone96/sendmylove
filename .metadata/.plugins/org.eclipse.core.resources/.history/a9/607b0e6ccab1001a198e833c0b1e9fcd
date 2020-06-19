@@ -1,0 +1,82 @@
+//메소드 자체가  jsp없이도 
+//client 브라우저에 문자열로 바로 응답하게 되는 기술
+
+package com.siat.seoul.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.siat.seoul.model.dao.UserRepository;
+
+import entity.User;
+
+@RestController
+public class NewController {
+   
+   //crud 기능의 의존 객체 선언 및 초기화
+   @Autowired
+   private UserRepository custRepo;
+   
+   
+   //http://ip:port/..?../hello
+   @GetMapping("hello")  //get요청만 처리
+   public String m1() {
+      System.out.println("m1()");
+      return "유재석";
+   }
+   
+   //method="post"
+   @PostMapping("helloPost")  //post요청만 처리
+   public String m2() {
+      System.out.println("m2()");
+      return "유재석post";
+   }
+   
+   //Customer 3명의 데이터를 list 저장해서 반환
+   //브라우저로 어떻 포멧으로 반환되는지 확인 
+   //List 타입의 객체는 client에게 JSON 포멧으로 응답
+   /*@PostMapping("helloCust")  //post요청만 처리
+   public List<Customer> m3() {
+      System.out.println("m3()");
+      
+      List<Customer> all = new ArrayList<Customer>();
+      all.add(new Customer("man1", 20));
+      all.add(new Customer("man2", 30));
+      all.add(new Customer("man3", 40));
+      
+      return all;
+   }*/
+   
+   
+   //jpa로 db에 test용 데이터 Customer 데이터를 다수 insert 예정
+   @GetMapping("custInsert")
+   public String custSave() {
+      for(int i=1; i < 11; i++) {
+         //insert
+         custRepo.save(new User(new Long(i), 
+                              "siat"+i, 19+i));
+      }
+      return "고객 데이터 저장";
+   }
+   //모든 고객 정보 검색
+   //spring data jpa api로 검색해서 json 형식으로 반환
+   @GetMapping("custAll")
+   public Iterable<User> getCustAll(){
+      System.out.println("getCustAll() ---");
+      //모든 검색
+      return custRepo.findAll();
+   }
+   
+   //하나의 고객만 검색
+   //http://ip:port/custOne?seq=값
+   @GetMapping("custOne")
+   public User getCust(Long seq){
+      System.out.println("getCust() ---");
+      return custRepo.findById(seq).get();
+   }
+}

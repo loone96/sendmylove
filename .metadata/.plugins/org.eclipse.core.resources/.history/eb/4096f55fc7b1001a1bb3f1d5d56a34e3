@@ -1,0 +1,9 @@
+package com.siat.seoul.model.dao;
+
+import org.springframework.data.repository.CrudRepository;
+
+import model.domain.Customer;
+
+public interface CustomerRepository extends CrudRepository<Customer, Long>{
+	
+}

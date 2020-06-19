@@ -1,0 +1,17 @@
+package com.sendmylove.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+@EnableAutoConfiguration
+@ComponentScan(basePackages = { "com.sendmylove.demo.controller" })
+@EnableJpaRepositories(basePackages = { "com.siat.seoul.model.dao" })
+@EntityScan("model.domain")
+public class Application {
+
+	public static void main(String[] args) {
+		SpringApplication.run(Application.class, args);
+	}
+
+}

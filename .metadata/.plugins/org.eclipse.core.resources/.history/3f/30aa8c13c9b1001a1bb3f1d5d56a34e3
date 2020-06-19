@@ -1,0 +1,22 @@
+package com.sendmylove.demo.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.sendmylove.demo.model.dao.UserRepository;
+
+@Controller
+public class LoginController {
+	
+	@Autowired
+	private UserRepository userRepo;
+
+	// 회원가입
+	@GetMapping("userInsert")
+	public String userSave(@RequestParam String id, (@RequestParam String id, @RequestParam String password, @RequestParam String nickname) {
+		custRepo.save(new User(id, password, nickname);
+		return "고객 데이터 저장";
+	}
+
+}

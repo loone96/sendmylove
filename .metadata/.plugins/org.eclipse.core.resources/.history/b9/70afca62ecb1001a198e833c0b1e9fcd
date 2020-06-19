@@ -1,0 +1,26 @@
+package model.domain;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+import lombok.Data;
+
+@Data
+@Entity
+public class Board {
+	@Id
+	private Long no;
+	@Column(name="gender",length=10)
+	private String gender;
+	@Column(name="finddate", nullable=false)
+	private String finddate
+	
+	private String loc;
+	private String detail;
+	
+	private String writedate;
+	
+	private String writer 
+
+}
