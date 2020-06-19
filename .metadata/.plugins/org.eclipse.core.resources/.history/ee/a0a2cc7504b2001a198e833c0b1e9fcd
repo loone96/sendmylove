@@ -111,7 +111,7 @@
               <input
                 class="cd-signin-modal__input cd-signin-modal__input--full-width cd-signin-modal__input--has-padding cd-signin-modal__input--has-border"
                 id="signin-email"
-                type="text" 
+                type="text"
                 placeholder="ID"
                 name="id"
               />
