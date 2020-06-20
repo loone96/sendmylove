@@ -25,8 +25,9 @@ public class User {
 	@Column(length = 100, nullable = false)
 	private String password;
 
-	@OneToMany(mappedBy = "writer")
-	List<Board> posts = new ArrayList<Board>();
+//	@OneToMany(mappedBy = "writer")
+//	List<Board> posts = new ArrayList<Board>();
 	
+	@Column(name="nickname")
 	private String nickname;
 }

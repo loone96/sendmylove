@@ -14,7 +14,6 @@ import com.sendmylove.demo.model.dao.UserRepository;
 
 import model.domain.User;
 
-@SessionAttributes({"id","nickname"})
 @Controller
 //@RestController
 public class LoginController {
@@ -22,8 +21,7 @@ public class LoginController {
 	private UserRepository userRepo;
 
 	@PostMapping("insertUser")
-	public String insertUser(@RequestParam String id, @RequestParam String password,
-			@RequestParam String nickname) {
+	public String insertUser(@RequestParam String id, @RequestParam String password, @RequestParam String nickname) {
 		try {
 			if (userRepo.existsById(id)) {
 				return "redirect:fail.html";
@@ -43,8 +41,8 @@ public class LoginController {
 			if (userRepo.existsById(id)) {
 				if (userRepo.findById(id).get().getPassword().equals(password)) {
 					session.setAttribute("id", id);
-					//return "redirect:index.html";
 					return "loginsuccess";
+					// return "redirect:index.html";
 				}
 			} else {
 				return "redirect:fail.html";
@@ -55,9 +53,17 @@ public class LoginController {
 		}
 		return "redirect:index.html";
 	}
-	
-	@GetMapping("jspTest")
-	public String m3() {
-		return "test";
+
+	@GetMapping("logoutUser")
+	public String logoutUser(HttpSession session) {
+		System.out.println(session.getAttribute("id"));
+		session.removeAttribute("id");
+		// return "redirect:index.html";
+		return "loginsuccess";
+
 	}
+	
+	
+	
+	
 }
