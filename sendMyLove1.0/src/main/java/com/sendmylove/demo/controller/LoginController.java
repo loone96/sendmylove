@@ -41,8 +41,8 @@ public class LoginController {
 			if (userRepo.existsById(id)) {
 				if (userRepo.findById(id).get().getPassword().equals(password)) {
 					session.setAttribute("id", id);
-					return "loginsuccess";
-					// return "redirect:index.html";
+					//return "loginsuccess";
+					return "redirect:index.html";
 				}
 			} else {
 				return "redirect:fail.html";

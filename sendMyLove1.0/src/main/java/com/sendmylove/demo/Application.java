@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.web.filter.CharacterEncodingFilter;
 
 @SpringBootApplication
-@EnableAutoConfiguration
-@ComponentScan(basePackages = { "com.sendmylove.demo.controller" })
+//@EnableAutoConfiguration
+//@ComponentScan(basePackages = { "com.sendmylove.demo.controller", "com.sendmylove.demo.service" })
 @EnableJpaRepositories(basePackages = { "com.sendmylove.demo.model.dao" })
 @EntityScan("model.domain")
 public class Application {
