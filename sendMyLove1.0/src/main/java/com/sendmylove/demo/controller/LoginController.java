@@ -59,7 +59,7 @@ public class LoginController {
 		System.out.println(session.getAttribute("id"));
 		session.removeAttribute("id");
 		// return "redirect:index.html";
-		return "loginsuccess";
+		return "redirect:index.html";
 
 	}
 	

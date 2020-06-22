@@ -41,5 +41,17 @@ public class MainController {
         return messagelistJson;
 
     }
+    
+    @RequestMapping(value = "/getAllMessages", method = RequestMethod.POST, produces = "application/json")
+    @ResponseBody
+    public String getAllMessages(HttpServletRequest request, HttpServletResponse response) {
+
+        // Get User list and last 3 messages
+        List<Message> messageslist = messageService.getAllMessages();
+        Gson gsonBuilder = new GsonBuilder().create();
+        String messagelistJson = gsonBuilder.toJson(messageslist);
+        return messagelistJson;
+
+    }
 
 }

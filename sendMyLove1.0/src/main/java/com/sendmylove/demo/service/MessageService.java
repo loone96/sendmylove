@@ -36,6 +36,11 @@ public class MessageService {
     public List<Message> getLastMessages() {
         return entityManager.createQuery("SELECT p FROM Message p ORDER BY p.id desc", Message.class).setMaxResults(3).getResultList();
     }
+    
+    public List<Message> getAllMessages() {
+        return entityManager.createQuery("SELECT p FROM Message p ORDER BY p.id desc", Message.class).getResultList();
+    }
+
 
     public List<Message> searchForTextinMessages(String text) {
         return entityManager.createQuery("SELECT p FROM Message p WHERE p.content LIKE '" + text + "%'", Message.class).getResultList();

@@ -24,7 +24,8 @@ $(document).ready(function () {
 	console.log("=============")
     contextPath = $("#contextPath").val();
     getActiveUsers();
-    getLastMessages();
+    //getLastMessages();
+    getAllMessages();
 });
 
 function getActiveUsers() {
@@ -116,6 +117,58 @@ function getLastMessages() {
     });
 
 }
+
+
+function getAllMessages() {
+
+
+    $.ajax({
+        url: contextPath + "/getAllMessages",
+        type: "POST",
+        error: function() {
+
+        },
+        success: function (data) {
+
+            if (data != null && data != undefined) {
+
+                var len = data.length;
+                for (var i = len - 1; i >= 0; i --) {
+
+                    // Add to MessageArea
+                    let messageElement = document.createElement('li');
+                    messageElement.classList.add('chat-message');
+
+                    let avatarElement = document.createElement('i');
+                    let avatarText = document.createTextNode(data[i].user_name[0]);
+                    avatarElement.appendChild(avatarText);
+                    avatarElement.style['background-color'] = getAvatarColor(data[i].user_name);
+
+                    messageElement.appendChild(avatarElement);
+
+                    let usernameElement = document.createElement('span');
+                    let usernameText = document.createTextNode(data[i].user_name);
+                    usernameElement.appendChild(usernameText);
+                    messageElement.appendChild(usernameElement);
+
+                    let textElement = document.createElement('p');
+                    let messageText = document.createTextNode(data[i].content);
+                    textElement.appendChild(messageText);
+
+                    messageElement.appendChild(textElement);
+
+                    messageArea.appendChild(messageElement);
+
+                }
+                messageArea.scrollTop = messageArea.scrollHeight;
+            }
+
+        },
+    });
+
+}
+
+
 
 function connect() {
     username = document.querySelector('#username').innerText.trim();
