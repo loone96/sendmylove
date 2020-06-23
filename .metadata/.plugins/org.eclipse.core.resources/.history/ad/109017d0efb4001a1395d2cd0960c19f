@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Document</title>
+<link rel="stylesheet" href="css/board.css">
+</head>
+
+<body>
+	<form action="insertBoard" method="POST">
+
+		<header>
+			<h2>글 작성</h2>
+		</header>
+
+
+		<div>
+			<fieldset>
+
+				<legend id="title5" class="desc"> 성별 </legend>
+
+				<div>
+					<div>
+						<input type="radio" id="Field5_1" name="gender" value="남성"
+							checked="checked">남성 <input type="radio" id="Field5_1"
+							name="gender" value="여성">여성
+					</div>
+				</div>
+			</fieldset>
+		</div>
+
+		<div>
+
+			<legend id="title5" class="desc"> 목격 시간 </legend>
+			<input class="desc" type="date" placeholder="Date" required
+				name="date" value="2020-01-01T00:00">
+			</p>
+			<legend id="title5" class="desc"> 상세한 시간 </legend>
+			<input id="Field4" name="detailtime" type="text" placeholder="..시쯤">
+		</div>
+
+
+
+		<div>
+			<label class="desc" id="title106" for="Field106"> 목격장소 </label>
+			<div>
+
+				<select name="sido" id="sido">
+					<option value="">-시도-</option>
+				</select> <select name="gugun" id="gugun">
+					<option value="">-구군-</option>
+				</select> <select name="dong" id="dong">
+					<option value="">-동-</option>
+				</select> <br>
+				<br> 자세한 위치 정보 :
+				<textarea id="Field4" name="loc" spellcheck="true" rows="1"
+					cols="50" tabindex="4"></textarea>
+			</div>
+		</div>
+		<div>
+			<label class="desc" id="title4" for="Field4"> 인상착의 : </label>
+
+			<div>
+				<textarea id="Field4" name="detail" spellcheck="true" rows="5"
+					cols="50" tabindex="4"></textarea>
+			</div>
+		</div>
+
+		<div>
+			<div>
+				<input id="saveForm" type="submit" value="작성">
+			</div>
+		</div>
+
+	</form>
+
+</body>
+<script src="js/sojaeji.js"></script>
+
+<script>
+    sojaeji('서울', '강남구', '신사동');
+</script>
+
+</html>

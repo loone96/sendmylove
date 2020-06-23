@@ -43,6 +43,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <link rel="stylesheet" href="css/plus_button.css">
 <link rel="stylesheet" href="css/button.css">
 
+<link rel="stylesheet" href="css/navbar.css">
 
 
 
@@ -280,22 +281,9 @@ img {
 		rgba(138, 59, 88, 0.1), 0 0 1px 45px rgba(138, 59, 88, 0.1);
 }
 
-.foo {
-	display : flex;
-	width : 20rem;
-}
+/* =====
+ */
 
-.foo > * {
-	width : 5rem;
-	top : 0!important;
-	left : 0!important;
-}
-
-.foo button {
-	top : 0px;
-	left : 0px;	
-	margin : 0px!important;
-}
 
 </style>
 
@@ -309,7 +297,7 @@ img {
 	<div class="header">
 		<div class="wrap">
 			<div class="logo">
-				<a href="index.html"><img src="images/logo.png" title="pinbal" /></a>
+				<a href="index.html"><img src="images/logo(cafe).svg" title="pinbal" /></a>
 			</div>
 			<div class="nav-icon">
 				<a href="#" class="right_bt" id="activator"><span> </span> </a>
@@ -342,25 +330,24 @@ img {
 					<nav class="cd-main-nav js-main-nav">
 						<ul class="cd-main-nav__list js-signin-modal-trigger foo">
 							<!-- inser more links here -->
-							<!-- <li><a class="cd-main-nav__item cd-main-nav__item--signin"
+						<!--	 <li><a class="cd-main-nav__item cd-main-nav__item--signin"
 								href="#0" data-signin="login">로그인</a></li>
 							<li><a href="logoutUser"><span>로그아웃</span></a></li>
 							<li><a href="chat.html"><span>채팅방</span></a></li> -->
 							<li>
-								<button id="btn_login" class="bubbly-button">로그인</button>
+								<button data-signin="login" id="btn_login" class="bubbly-button">로그인</button>
 							</li>
 							<li>
 								<button id="btn_logout" class="bubbly-button">로그아웃</button>
 							</li>
 							<li>
-								<button id="btn_chat" class="bubbly-button">채팅방</button>
+								<button id="btn_chat" onclick="window.location.href='chat.html'" class="bubbly-button">채팅방</button>
 							</li>
 							<!-- <li class="plusimg" id="plus"><a href="board.html"><span><i
 										class="fas fa-plus"></i></span></a></li> -->
 
 							<li>
-								<button id="btn-plus" class="plus"></button>
-							</li>
+<button id="btn-plus" onclick="window.location.href='board.html'" class="plus"></button>							</li>
 
 						</ul>
 					</nav>

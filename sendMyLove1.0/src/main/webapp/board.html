@@ -6,75 +6,67 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Document</title>
 <link rel="stylesheet" href="css/board.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"/>
 </head>
 
 <body>
-	<form action="insertBoard" method="POST">
+<div class="container">
+        <form action="insertBoard" method="POST">
+            <h1>내 사람을 찾습니다.</h1>
+            <div class="form-radio">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="gender" value="남성" checked="checked" /><i class="helper"></i>남성
+                    </label>
 
-		<header>
-			<h2>글 작성</h2>
-		</header>
-
-
-		<div>
-			<fieldset>
-
-				<legend id="title5" class="desc"> 성별 </legend>
-
-				<div>
-					<div>
-						<input type="radio" id="Field5_1" name="gender" value="남성"
-							checked="checked">남성 <input type="radio" id="Field5_1"
-							name="gender" value="여성">여성
-					</div>
-				</div>
-			</fieldset>
-		</div>
-
-		<div>
-
-			<legend id="title5" class="desc"> 목격 시간 </legend>
-			<input class="desc" type="date" placeholder="Date" required
-				name="date" value="2020-01-01T00:00">
-			</p>
-			<legend id="title5" class="desc"> 상세한 시간 </legend>
-			<input id="Field4" name="detailtime" type="text" placeholder="..시쯤">
-		</div>
+                    <label>
+                        <input type="radio" name="gender" value="여성"/><i class="helper"></i>여성
+                    </label>
+                </div>
+            </div>
 
 
+            <div class="form-group">
 
-		<div>
-			<label class="desc" id="title106" for="Field106"> 목격장소 </label>
-			<div>
+                <select name="sido" id="sido">
+                    <option value="">-시도-</option>
+                </select>
+                <select name="gugun" id="gugun">
+                    <option value="">-구군-</option>
+                </select>
+                <select name="dong" id="dong">
+                    <option value="">-동-</option>
+                </select>
 
-				<select name="sido" id="sido">
-					<option value="">-시도-</option>
-				</select> <select name="gugun" id="gugun">
-					<option value="">-구군-</option>
-				</select> <select name="dong" id="dong">
-					<option value="">-동-</option>
-				</select> <br>
-				<br> 자세한 위치 정보 :
-				<textarea id="Field4" name="loc" spellcheck="true" rows="1"
-					cols="50" tabindex="4"></textarea>
-			</div>
-		</div>
-		<div>
-			<label class="desc" id="title4" for="Field4"> 인상착의 : </label>
+                <label for="select" class="control-label">목격 장소</label><i class="bar"></i>
+            </div>
 
-			<div>
-				<textarea id="Field4" name="detail" spellcheck="true" rows="5"
-					cols="50" tabindex="4"></textarea>
-			</div>
-		</div>
 
-		<div>
-			<div>
-				<input id="saveForm" type="submit" value="작성">
-			</div>
-		</div>
+            <div class="form-group">
+                <input type="text" name="loc" required="required" />
+                <label for="input" class="control-label">자세한 위치 정보</label><i class="bar"></i>
+            </div>
 
-	</form>
+            <div class="form-group">
+                <input name="date" class="form-group" type="date" placeholder="Date" required name="date" value="2020-01-01T00:00">
+                <label for="input" class="control-label">목격 시간</label><i class="bar"></i>
+            </div>
+
+            <div class="form-group">
+                <input name="detailtime" type="text" required="required" />
+                <label for="input" class="control-label">상세한 시간</label><i class="bar"></i>
+            </div>
+
+
+            <div class="form-group">
+                <textarea required="required" name="detail"></textarea>
+                <label for="textarea" class="control-label">인상착의</label><i class="bar"></i>
+            </div>
+            <div class="button-container">
+                <button type="button" class="button" onclick="location.href='insertBoard'"><span>작성</span></button>
+            </div>
+        </form>
+    </div>
 
 </body>
 <script src="js/sojaeji.js"></script>
