@@ -20,8 +20,7 @@
 	<div id="chat-page" align="center">
 		<div class="chat-page-header">
 			<div align="right">
-				<a th:href="@{/search}" class="search-a">Search</a> <a
-					th:href="@{/logout}" class="logout-a">Logout</a>
+				<a href="index.html" style="text-decoration; none; font-size:30px; color:white; font-family: 'Cafe24Oneprettynight';" class="search-a" >main으로 가기</a>
 			</div>
 			<div id="id_view">
 				<h1>
@@ -76,7 +75,7 @@
 			 currId : '',
 			 currNickname: ''
 		 },
-		 mounted () {
+		 created () {
 			 axios.post('/currStatus').then(res=> {
 				 if (res.data.id.length != 0 && res.data.id.length != null) {
 					 console.log('길이가 '+res.data.id.trim().length);

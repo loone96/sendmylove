@@ -22,7 +22,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	
 	
 	
+	
 	 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
 
 
 
@@ -42,7 +44,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <link rel="stylesheet" href="css/plus_button.css">
 <link rel="stylesheet" href="css/button.css">
-
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" />
 <link rel="stylesheet" href="css/navbar.css">
 
 
@@ -283,8 +286,6 @@ img {
 
 /* =====
  */
-
-
 </style>
 
 
@@ -297,57 +298,56 @@ img {
 	<div class="header">
 		<div class="wrap">
 			<div class="logo">
-				<a href="index.html"><img src="images/logo(cafe).svg" title="pinbal" /></a>
+				<a href="index.html"><img src="images/logo(cafe).svg"
+					title="pinbal" /></a>
 			</div>
 			<div class="nav-icon">
 				<a href="#" class="right_bt" id="activator"><span> </span> </a>
 			</div>
 			<div class="box" id="box">
-				<div class="box_content">
-					<div class="box_content_center">
-						<div class="form_content">
-							<div class="menu_box_list">
-								<ul>
-									<li><a href="#"><span>About</span></a></li>
-									<li><a href="register.html">join</a></li>
-									<li><a href="contact.html"><span>message</span></a></li>
-
-									<div class="clear"></div>
-								</ul>
-							</div>
-							<a class="boxclose" id="boxclose"> <span> </span></a>
-						</div>
-					</div>
-				</div>
+				<input v-model="currId" id="currId" type="hidden">
 			</div>
 			<div class="top-searchbar">
 				<form>
-					<input type="text" /><input type="submit" value="" />
+					<input v-model="currKey" type="text" id="searchbar" placeholder="지역을 검색해주세요."/>
+					<button id="btn_search" class="bubbly-button" type="button"
+						@click="search">
+						<i class="fa fa-search fa-3x" aria-hidden="true"></i>
+					</button>
 				</form>
 			</div>
 			<div class="userinfo">
 				<header class="cd-main-header">
 					<nav class="cd-main-nav js-main-nav">
-						<ul class="cd-main-nav__list js-signin-modal-trigger foo">
+						<ul id="nav_ul"
+							class="cd-main-nav__list js-signin-modal-trigger foo">
 							<!-- inser more links here -->
-						<!--	 <li><a class="cd-main-nav__item cd-main-nav__item--signin"
+							<!--	 <li><a class="cd-main-nav__item cd-main-nav__item--signin"
 								href="#0" data-signin="login">로그인</a></li>
 							<li><a href="logoutUser"><span>로그아웃</span></a></li>
 							<li><a href="chat.html"><span>채팅방</span></a></li> -->
 							<li>
-								<button data-signin="login" id="btn_login" class="bubbly-button">로그인</button>
+								<button data-signin="login" id="btn_login" class="bubbly-button" style="font-size:0.7em;">로그인</button>
 							</li>
 							<li>
-								<button id="btn_logout" class="bubbly-button">로그아웃</button>
+								<button id="btn_logout"
+									onclick="window.location.href='/logoutUser'"
+									class="bubbly-button" style="font-size:0.6em;">로그아웃</button>
 							</li>
+							
+                  </button>
 							<li>
-								<button id="btn_chat" onclick="window.location.href='chat.html'" class="bubbly-button">채팅방</button>
+								<button id="btn_chat" onclick="goToChat()" class="bubbly-button">
+									<i class="fa fa-paper-plane-o  fa-2x" aria-hidden="true"></i>
+								</button>
 							</li>
+
 							<!-- <li class="plusimg" id="plus"><a href="board.html"><span><i
 										class="fas fa-plus"></i></span></a></li> -->
 
 							<li>
-<button id="btn-plus" onclick="window.location.href='board.html'" class="plus"></button>							</li>
+								<button id="btn-plus" onclick="goToBoard()" class="plus"></button>
+							</li>
 
 						</ul>
 					</nav>
@@ -443,7 +443,7 @@ img {
 			</div>
 
 			<div class="actions">
-				<button class="trade">쪽지 보내기</button>
+				<button onclick="goToChat()" data-hover="보내줘!" class="trade">쪽지 보내기</button>
 				<div class="overlay"></div>
 				<div class="heart-container">
 					<div class="heart"></div>
@@ -510,7 +510,7 @@ img {
 	</script>
 
 	<script>
-		let v1 = new Vue({
+		let board = new Vue({
 			el: '#board',
 			data: {
 				posts: []
@@ -518,8 +518,66 @@ img {
 			mounted () {
 				axios.get('/selectAllPosts').then(res=>this.posts=res.data)	
 			}
-		})
+		});
+		let box = new Vue({
+			 el: '#box',
+			 data: {
+			 currId : '',
+			 currNickname: ''
+		 },
+		 created () {
+			 axios.post('/currStatus').then(res=> {
+				 if (res.data.id.length != 0 && res.data.id.length != null) {
+					 this.currNickname = res.data.nickname; 
+					 this.currId = res.data.id;
+				 } else {
+					 console.log('=========로그인 안됨=======');
+					 alert('로그인 후 이용바랍니다.');
+				 }
+			 });
+		 }
+		 });
+		
+		let search = new Vue({
+			el: '.top-searchbar',
+			data: {
+				currKey: '',
+				posts: []
+			},
+			methods: {
+				getPosts: async function() {
+					axios.get('/selectAllPosts').then(res=>this.posts=res.data)					
+				},
+				search: function() {
+					this.getPosts();
+					var currKey = this.currKey;
+					if (this.posts.length == 0) {
+						board.posts = board.posts.filter(item => item.loc.includes(currKey));
+					}else{
+						board.posts = this.posts.filter(item => item.loc.includes(currKey));
+					}
+				}
+			}
+		}) 
+		
 	
+		function goToChat() {
+			if (document.querySelector('#currId').value.length == 0) {
+				alert('로그인 후 이용해주세요.')
+			} else {
+				window.location.href='/chat.html';
+			}
+		}
+		
+		function goToBoard() {
+			if (document.querySelector('#currId').value.length == 0) {
+				alert('로그인 후 이용해주세요.')
+			} else {
+				window.location.href='/board.html';
+			}
+		}
+		
+
 	</script>
 
 	<script>

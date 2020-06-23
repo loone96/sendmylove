@@ -43,23 +43,26 @@ public class LoginController {
 					session.setAttribute("id", id);
 					//return "loginsuccess";
 					return "redirect:index.html";
+				}else {
+					session.setAttribute("errorMsg", "비밀번호를 재확인 후 다시 로그인 해주세요.");
+					return "redirect:fail.html";
 				}
 			} else {
+				session.setAttribute("errorMsg", "아이디가 존재하지 않습니다. 다시 재확인 후 로그인 해주세요.");
 				return "redirect:fail.html";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "redirect:fail.html";
 		}
-		return "redirect:index.html";
 	}
 
 	@GetMapping("logoutUser")
 	public String logoutUser(HttpSession session) {
 		System.out.println(session.getAttribute("id"));
 		session.removeAttribute("id");
-		// return "redirect:index.html";
-		return "redirect:index.html";
+		 return "redirect:index.html";
+		//return "loginsuccess";
 
 	}
 	

@@ -363,10 +363,10 @@ fieldset {
 
 .button {
   position: relative;
-  background: currentColor;
-  border: 1px solid currentColor;
+  background: #ff9292;
+  border: 1px solid #ff9292;
   font-size: 1.1rem;
-  color: #ff9292;
+  color: white;
   margin: 3rem 0;
   padding: 0.75rem 3rem;
   cursor: pointer;
@@ -380,7 +380,29 @@ fieldset {
   position: relative;
   z-index: 1;
 }
-.button::before {
+
+.button1 {
+  left: 58.5%;
+  position: relative;
+  background: #ff9292;
+  border: 1px solid #ff9292;
+  font-size: 1.1rem;
+  color: white;
+  margin: 3rem 0;
+  padding: 0.75rem 3rem;
+  cursor: pointer;
+  -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
+  transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
+  overflow: hidden;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+}
+.button1 span {
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+/* .button::before {
   content: '';
   position: absolute;
   background: #071017;
@@ -395,12 +417,14 @@ fieldset {
   opacity: 1;
   -webkit-transform: translate(-50%, -50%) scale(0);
           transform: translate(-50%, -50%) scale(0);
-}
-.button:hover {
+} */
+/* .button:hover {
   color: #ff9292;
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
 }
-.button:active::before, .button:focus::before {
+ */
+ 
+ /* .button:active::before, .button:focus::before {
   -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
   transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
   transition: transform 1.12s ease, opacity 0.28s ease 0.364s;
@@ -411,4 +435,4 @@ fieldset {
 }
 .button:focus {
   outline: none;
-}
+} */

@@ -1,4 +1,9 @@
 /* reset */
+@font-face { font-family: 'Cafe24Oneprettynight'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.1/Cafe24Oneprettynight.woff') format('woff'); font-weight: normal; font-style: normal; }
+*{
+	font-family: 'Cafe24Oneprettynight';
+}
+
 html,
 body,
 div,
@@ -118,6 +123,7 @@ table {
 /* start editing from here */
 a {
   text-decoration: none;
+  font-size: 20px;
 }
 .txt-rt {
   text-align: right;
@@ -1366,7 +1372,7 @@ span.mail a:hover {
     border: 1px solid rgba(255, 255, 255, 0.6);
   }
   .cd-main-nav__item.cd-main-nav__item--signup {
-    background: #2f889a;
+    background: #ff9292;
   }
 }
 
@@ -1557,7 +1563,7 @@ x sigin/signup popup
 .cd-signin-modal__input[type='submit'] {
   padding: 16px 0;
   cursor: pointer;
-  background: #2f889a;
+  background: #ff9292;
   color: #fff;
   font-weight: bold;
   border: none;
@@ -1570,7 +1576,7 @@ x sigin/signup popup
 
 .cd-signin-modal__input[type='submit']:hover,
 .cd-signin-modal__input[type='submit']:focus {
-  background: #3599ae;
+  background: #ff9292;
   outline: none;
 }
 
@@ -1586,7 +1592,7 @@ x sigin/signup popup
   -webkit-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
-  font-size: 1.4rem;
+  font-size: 1rem;
   color: #343642;
 }
 
@@ -1707,3 +1713,31 @@ x sigin/signup popup
 }
 
 
+ 
+
+
+    /*button:before (attr data-hover)*/
+    button:hover:before{opacity: 1; transform: translate(0,0);}
+    button:before{
+      content: attr(data-hover);
+      position: absolute;
+      top: 1.1em; left: 0;
+      width: 100%;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-weight: 800;
+      font-size: 1em;
+      opacity: 0;
+      transform: translate(-100%,0);
+      transition: all .3s ease-in-out;
+      color: black;
+    }
+      /*button div (button text before hover)*/
+      button:hover div{opacity: 0; transform: translate(100%,0)}
+      button div{
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        font-weight: 800;
+        font-size: 1em;
+        transition: all .3s ease-in-out;
+      }

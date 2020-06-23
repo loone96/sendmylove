@@ -175,7 +175,6 @@ function connect() {
     user_id = document.querySelector('#user_id').value.trim();
     console.log('un는 '+username);
     console.log('uid는 '+user_id+"?");
-
     var socket = new SockJS('/ws');
     stompClient = Stomp.over(socket);
 

@@ -2,12 +2,14 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="login" key="selection"/>
+		<item value="" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
+			<item value="get"/>
+			<item value="searchbar"/>
 			<item value="login"/>
 			<item value="btn_login"/>
 			<item value="cd-main-nav__list js-signin-modal-trigger"/>
@@ -21,8 +23,6 @@
 			<item value="#btn_"/>
 			<item value="btn_"/>
 			<item value="z-index: 999"/>
-			<item value="header"/>
-			<item value="hader"/>
 		</list>
 		<list key="replacehistory">
 			<item value=".bubbly-button1"/>
